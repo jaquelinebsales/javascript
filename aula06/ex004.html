@@ -31,7 +31,16 @@
         <section>
             <script>
                 var nome = prompt('qual o seu nome? :p')
-                document.write(`Seu nome tem ${nome.length} letras.`)
+                document.write(`Seu nome tem ${nome.length} letras.<br>`)
+                document.write(`Seu nome em maiúsculas é ${nome.toUpperCase()} <br>`)
+                document.write(`Em minúsculas seu nome é ${nome.toLowerCase()}<br>`)
+
+
+                
+                var n1 = parseFloat(prompt('Digite um número'))
+
+                document.write(`Este número em formato de dinheiro no Brasil é ${n1.toLocaleString('pt-BR', {style: 'currency', currency:'BRL'})}`)
+
             </script>
         </section>
     </main>
