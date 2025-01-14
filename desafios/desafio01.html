@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora em JavaScript</title>
+</head>
+<body>
+    <h1>Calculadora Interativa</h1>
+
+    <p id="msg"></p>
+
+    <input type="number" id="n1">
+    <input type="numebr" id="n2"><br>
+
+    <button onclick="somar" id="somar">Somar</button><br>
+    <button onclick="subtrair" id="subtrair">Subtrair</button><br>
+    <button onclick="multiplicar" id="multiplicar">Multiplicar</button><br>
+    <button onclick="dividir" id="dividir">Dividir</button>
+
+    <p id="res">
+ oi
+    </p>
+    <script>
+        /*var nome = document.getElementById('nome');
+        
+        nome.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter'){
+                var nomee = nome.value;
+                var msg = document.getElementById('msg');
+                msg.innerHTML = `Bem-vindo(a), ${nomee} !`;
+                nome.value='';
+            }
+        })*/
+
+        var nome = prompt('Qual o seu nome?')
+
+        var msg = document.getElementById('msg')
+
+        msg.innerHTML = `Bem-vindo(a) ${nome}.`
+
+        var ntxt1 = document.getElementById('n1')
+        var ntxt2 = document.getElementById('n2')
+
+        var n1 = ntxt1.value
+        var n2 = ntxt2.value
+
+        function somar(n1, n2){
+            var res = document.getElementById('res')
+            var rest = n1 + n2
+            res.innerHTML = 'rest'
+        }
+    </script>
+</body>
+</html>
