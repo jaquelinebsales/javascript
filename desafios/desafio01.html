@@ -4,52 +4,166 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora em JavaScript</title>
+    <style>
+        body{
+            font-family: arial;
+        }
+        button{
+            font-size: 1.1em;
+            padding: 5px;
+            width: 100px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: -3px 5px 10px rgba(0, 0, 0, 0.150);
+        }
+        .botao{
+            display: flex;
+            justify-content: center;
+        }
+        .input{
+            display: flex;
+            justify-content: center;
+        }
+        input{
+            font-size: 1.1em;
+            margin: 20px;
+            width: 100px;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: -3px 5px 10px rgba(0, 0, 0, 0.150);
+        }
+        .calc{
+            background-color: lightgray;
+            max-width: 700px;
+            margin: auto;
+            padding: 20px;
+            
+            border: 1px solid black;
+            border-radius: 10px;
+            box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.438);
+        }
+        #msg{
+            margin: 40px 20px ;      
+        }
+        h1{
+            margin: 40px 20px ;    
+        }
+        .somar{
+            background-color: lightcoral;
+        }
+        .subtrair{
+            background-color: rgb(255, 255, 154);
+        }
+        .multiplicar{
+            background-color: lightblue;
+        }
+        .dividir{
+            background-color: lightgreen;
+        }
+    </style>
 </head>
 <body>
-    <h1>Calculadora Interativa</h1>
+    <main>
+        <h1>Calculadora Interativa</h1>
 
-    <p id="msg"></p>
+        <p id="msg"></p>
 
-    <input type="number" id="n1">
-    <input type="numebr" id="n2"><br>
+        <section class="calc">
+            <div class="input">
+                <input type="number" id="n1">
+                <input type="numebr" id="n2"><br>
+            </div>
 
-    <button onclick="somar" id="somar">Somar</button><br>
-    <button onclick="subtrair" id="subtrair">Subtrair</button><br>
-    <button onclick="multiplicar" id="multiplicar">Multiplicar</button><br>
-    <button onclick="dividir" id="dividir">Dividir</button>
+            <div class="botao">
+                <button onclick="somar()" class="somar">Somar</button>
 
-    <p id="res">
- oi
-    </p>
-    <script>
-        /*var nome = document.getElementById('nome');
+                <button onclick="subtrair()" class="subtrair">Subtrair</button>
+                <button onclick="multiplicar()" class="multiplicar">Multiplicar</button>
+                <button onclick="dividir()" class="dividir">Dividir</button>
+            </div>
+
+            <p id="res">
+                
+            </p>
+        </section>
+
         
-        nome.addEventListener('keypress', function(event) {
-            if (event.key === 'Enter'){
-                var nomee = nome.value;
-                var msg = document.getElementById('msg');
-                msg.innerHTML = `Bem-vindo(a), ${nomee} !`;
-                nome.value='';
+        <script>
+            /*var nome = document.getElementById('nome');
+        
+            nome.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter'){
+                    var nomee = nome.value;
+                    var msg = document.getElementById('msg');
+                    msg.innerHTML = `Bem-vindo(a), ${nomee} !`;
+                    nome.value='';
+                }
+            })*/
+            var nome = prompt('Qual o seu nome?')
+            var msg = document.getElementById('msg')
+            msg.innerHTML = `Bem-vindo(a) ${nome}.`
+
+            var ntxt1 = document.getElementById('n1')
+            var ntxt2 = document.getElementById('n2')
+
+            
+
+            function somar(n1, n2){
+
+                var n1 = Number(ntxt1.value)
+                var n2 = Number(ntxt2.value)
+
+                var res = document.getElementById('res')
+                var rest = n1 + n2
+
+                res.innerHTML = `A resposta é ${rest}`;
+
+                document.body.style.background = 'red';
             }
-        })*/
 
-        var nome = prompt('Qual o seu nome?')
+            function subtrair(n1, n2){
 
-        var msg = document.getElementById('msg')
+            var n1 = Number(ntxt1.value)
+            var n2 = Number(ntxt2.value)
 
-        msg.innerHTML = `Bem-vindo(a) ${nome}.`
-
-        var ntxt1 = document.getElementById('n1')
-        var ntxt2 = document.getElementById('n2')
-
-        var n1 = ntxt1.value
-        var n2 = ntxt2.value
-
-        function somar(n1, n2){
             var res = document.getElementById('res')
-            var rest = n1 + n2
-            res.innerHTML = 'rest'
-        }
-    </script>
+            var rest = n1 - n2
+
+            res.innerHTML = `A resposta é ${rest}`;
+
+            document.body.style.background = 'yellow';
+            }
+
+            function multiplicar(n1, n2){
+
+            var n1 = Number(ntxt1.value)
+            var n2 = Number(ntxt2.value)
+
+            var res = document.getElementById('res')
+            var rest = n1 * n2
+
+            res.innerHTML = `A resposta é ${rest}`;
+
+            document.body.style.background = 'blue';
+            }
+
+            function dividir(n1, n2){
+
+            var n1 = Number(ntxt1.value)
+            var n2 = Number(ntxt2.value)
+
+            var res = document.getElementById('res')
+            var rest = n1 / n2
+
+            res.innerHTML = `A resposta é ${rest}`;
+
+            document.body.style.background = 'green';
+            }//
+
+
+        </script>
+    </main>
 </body>
 </html>
