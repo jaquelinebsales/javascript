@@ -33,19 +33,60 @@ function carregar(){
 }
 
 
-/*https://images.pexels.com/photos/30254240/pexels-photo-30254240.jpeg?auto=compress&cs=tinysrgb&w=600  menino crianaca*/
+function verificar(){
+    var data = new Date;
+    var ano = data.getFullYear();
+    var fano = document.getElementById('txtano');
+    var res = document.getElementById('res');
+    var img = document.createElement('img');
+    img.setAttribute('id','foto')
 
-/*https://images.pexels.com/photos/30206878/pexels-photo-30206878/free-photo-of-menina-sorridente-com-galho-de-fruta-vermelha-ao-ar-livre.jpeg?auto=compress&cs=tinysrgb&w=600 menina crianca*/
 
-/*https://images.pexels.com/photos/459971/pexels-photo-459971.jpeg?auto=compress&cs=tinysrgb&w=600 adolescente mulher*/
+    if(fano.value.length == 0 || fano.value > ano){
+        alert('[ERRO] Verifique os dados e tente novamente.')
+    } else {
+        fsex = document.getElementsByName('radsex');
+        var idade = ano - fano.value;
+        var sexo = '';
+        if (fsex[0].checked){
+            sexo = 'homem';
 
-/* https://images.pexels.com/photos/1304647/pexels-photo-1304647.jpeg?auto=compress&cs=tinysrgb&w=600 menino adolescente*/
+            if(idade >= 0 && idade <= 12){
+                //crianca
+                img.setAttribute('src','https://images.pexels.com/photos/30254240/pexels-photo-30254240.jpeg?auto=compress&cs=tinysrgb&w=600')
+            }else if (idade < 18){
+                //adolescente
+                img.setAttribute('src', 'https://images.pexels.com/photos/1304647/pexels-photo-1304647.jpeg?auto=compress&cs=tinysrgb&w=600')
+            }else if (idade < 60){
+                //adulto
+                img.setAttribute('src', 'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=600')
+            }else{
+                //idoso
+                img.setAttribute('src','https://images.pexels.com/photos/3831645/pexels-photo-3831645.jpeg?auto=compress&cs=tinysrgb&w=600')
+            }
 
-/*https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=600  mulher adulta*/
+        } else if (fsex[1].checked){
+            sexo = 'mulher';
 
-/*https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=600 homem adulto */
+            if(idade >= 0 && idade <= 12){
+                //crianca
+                img.setAttribute('src','https://images.pexels.com/photos/30206878/pexels-photo-30206878/free-photo-of-menina-sorridente-com-galho-de-fruta-vermelha-ao-ar-livre.jpeg?auto=compress&cs=tinysrgb&w=600')
+            }else if (idade < 18){
+                //adolescente
+                img.setAttribute('src', 'https://images.pexels.com/photos/459971/pexels-photo-459971.jpeg?auto=compress&cs=tinysrgb&w=600')
+            }else if (idade < 60){
+                //adulto
+                img.setAttribute('src','https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=600')
+            }else{
+                //idoso
+                img.setAttribute('src', 'https://images.pexels.com/photos/1729931/pexels-photo-1729931.jpeg?auto=compress&cs=tinysrgb&w=600')
+            }
 
-/* https://images.pexels.com/photos/1729931/pexels-photo-1729931.jpeg?auto=compress&cs=tinysrgb&w=600 mulher idosa*/
 
-/*https://images.pexels.com/photos/3831645/pexels-photo-3831645.jpeg?auto=compress&cs=tinysrgb&w=600 homem idoso*/
+        }
 
+    }
+    res.innerHTML = `Detectamos um ${sexo} com ${idade} anos`
+    res.appendChild(img)
+
+}
