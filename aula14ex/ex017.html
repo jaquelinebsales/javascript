@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(136, 163, 214);
+        }
+
+        header{
+            color: white;
+            text-align: center;
+            margin: 50px;
+        }
+
+        section{
+            background-color: white;
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        div#tab{
+            height: 150px;
+            width: 50%;
+            overflow-y: auto;
+        }
+        input{
+            width: 100px;
+            margin: 10px;
+            padding: 5px;
+        }
+
+        footer > p{
+            color: white;
+            text-align: center;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+
+        function gerar(){
+            
+            var tab = document.getElementById('tab')
+            var num = Number(document.getElementById('num').value)
+
+            if (isNaN(num)){
+                alert('preencha o campo em branco e tente novamente')
+            } else {
+               tab.innerHTML = ''
+                for( var i = 0; i <=10; i++){
+
+                    var item = document.createElement('option')
+                    
+                    item.text = `${num} * ${i} = ${num*i}`
+
+                    tab.appendChild(item)
+
+
+                } 
+            }
+
+
+
+
+        }
+
+
+
+    </script>
+    <header>
+        <h1>Tabuada</h1>
+    </header>
+    <section>
+        Digite um número:<input type="number" name="num" id="num">
+        <button name="gerar" id="gerar" onclick="gerar()">Gerar Tabuada</button><br>
+        <select name="tab" id="tab" size="10">
+            <option value="">Digite um número acima</option>
+        </select>
+    </section>
+    <footer>
+        <p>&copy; Curso em Video</p>
+    </footer>
+</body>
+</html>

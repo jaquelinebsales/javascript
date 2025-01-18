@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(136, 163, 214);
+        }
+
+        header{
+            color: white;
+            text-align: center;
+            margin: 50px;
+        }
+
+        section{
+            background-color: white;
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input{
+            width: 100px;
+            margin: 10px;
+            padding: 5px;
+        }
+
+        
+        footer > p{
+            color: white;
+            text-align: center;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function contar() {
+            var res = document.getElementById('res');
+            var inicioo = document.getElementById('inicio');
+            var fimm = document.getElementById('fim');
+            var passoss = document.getElementById('passos');
+
+            var inicio = Number(inicioo.value);
+            var fim = Number(fimm.value);
+            var passos = Number(passoss.value);
+
+            // Limpar o resultado antes de começar
+            res.innerHTML = '';
+
+            // Verificar se os campos de início ou fim estão vazios
+            if (isNaN(inicio) || isNaN(fim)) {
+                alert('Campos vazios detectados. Verifique os dados e tente novamente.');
+            } else if (passos == 0) {
+                var passos = 1
+            } else {
+                // Realizar a contagem
+                if (inicio < fim) {
+                    // Contagem crescente
+                    for (var i = inicio; i <= fim; i += passos) {
+                        res.innerHTML += `👉 ${i}`;
+                    }
+                    res.innerHTML += '🏁'
+                } else {
+                    // Contagem decrescente
+                    for (var i = inicio; i >= fim; i -= passos) {
+                        res.innerHTML += `👉 ${i}`;
+                    }
+                    res.innerHTML += '🏁'                
+                }
+            }
+        }
+
+
+    </script>
+    <header>
+        <h1>Vamos contar</h1>
+    </header>
+    <section>
+        <strong>Início:</strong> <input type="number" name="inicio" id="inicio"><br>
+        <strong>Fim:</strong> <input type="number" name="fim" id="fim"><br>
+        <strong>Passos:</strong> <input type="number" name="passos" id="passos"><br>
+        <input type="button" value="Contar" name="contar" id="contar" onclick="contar()">
+
+        <div id="res">
+            
+        </div>
+
+    </section>
+    <footer>
+        <p>&copy; Curso em Video</p>
+    </footer>
+</body>
+</html>
