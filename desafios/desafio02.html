@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio de interatividade</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #310A31;
+        }
+        header > h1{
+            color: #F4ECD6;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.507);
+            text-align: center;
+            margin: 30px;
+        }
+        main{
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.404);
+            margin: 10px;
+            padding: 10px;
+            background-color: #A7CAB1;
+            border-radius: 5px;
+            max-width: 800px;
+            margin: auto;
+        }
+        h2{
+            margin: 10px;
+
+        }
+        p{
+            margin: 10px;
+        }
+        input{
+            margin: 5px;
+            background-color: white;
+            padding: 2px;
+            border: none;
+            width: 90px;
+        }
+        button{
+            color: white;
+            font-size: 1.05em;
+            margin: 5px;
+            background-color: #847996;
+            padding: 5px;
+            border-radius: 5px;
+            
+        }
+
+        .res{
+            background-color: #F4ECD6;
+            padding: 5px;
+            margin: 5px;
+            border-radius: 5px;
+            width: 97%;
+        }
+
+        footer p, footer a{
+            text-align: center;
+            color: #F4ECD6;
+            
+        }
+
+        footer p{
+            margin: 30px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+
+
+
+        document.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                cadastro();
+            }
+        });
+
+        function cadastro(){
+            var bCad = document.getElementById('bCad')
+            var numAlunos = Number(document.getElementById('num_alunos').value)
+            var pNotas = document.getElementById('pNotas')
+            pNotas.innerHTML = ''
+            var notas = []
+
+            var i = 1
+            while(i <= numAlunos){
+                notas.push(i)
+                pNotas.innerHTML += `Nota aluno ${i}° : <input type="number" name="nota_alunos" id="nota_aluno${i}"><br>`
+                i++
+            }
+
+    
+            
+        }
+
+
+        function calcularNotas(){
+             var pNotaMenor = document.getElementById('notaMenor')
+            var pNotaMaior = document.getElementById('notaMaior');
+            var numAlunos = Number(document.getElementById('num_alunos').value)
+
+            pNotaMaior.innerHTML = ''
+            var notas = []
+
+            for(var c = 1; c <= numAlunos; c++){
+                
+                var nota = Number(document.getElementById('nota_aluno' + c).value)
+
+                notas.push(nota)
+
+                
+            }
+
+
+            var notaMaiorCres = notas.sort((a, b) => a - b)
+           
+            var notaMaior = notaMaiorCres[notas.length - 1]
+            
+            var notaMenor = notaMaiorCres[0]
+
+            pNotaMenor.innerHTML = `Menor nota: ${notaMenor}`
+            pNotaMaior.innerHTML = `Maior nota: ${notaMaior}`
+
+            let soma = 0;
+
+            for (let i = 0; i < notas.length; i++) {
+                soma += notas[i];
+            }
+
+            var media = soma / notas.length
+
+            var pMedia = document.getElementById('notaMedia')
+
+            pMedia.innerHTML = `A média é: ${media}`
+        }
+        
+    </script>
+    <header>
+        <h1>INSERÇÃO DE NOTAS</h1>
+    </header>
+    <main>
+    
+            <h2>Cadastro de notas</h2>
+            <p>
+                Número de alunos na turma:<input type="number" name="num_alunos" id="num_alunos">
+            </p>
+            <p id="pNotas">
+
+            </p>
+            <p id="bCad">
+                <button onclick="calcularNotas()">
+                    Calcular notas
+                </button>
+            </p>
+            <div class="res">
+                <p id="notaMaior">
+                </p>
+                <p id="notaMenor">
+                </p>
+                <p id="notaMedia">
+                </p>
+            </div>
+        
+    
+    
+    </main>
+    <footer>
+        <p>&copy; <a href="https://github.com/jaquelinebsales" target="_blank">jaquelinebsales</a></p>
+    </footer>
+</body>
+</html>
